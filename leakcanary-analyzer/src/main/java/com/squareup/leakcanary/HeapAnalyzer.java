@@ -35,8 +35,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static android.os.Build.VERSION.SDK_INT;
-import static android.os.Build.VERSION_CODES.N_MR1;
 import static com.squareup.leakcanary.AnalysisResult.failure;
 import static com.squareup.leakcanary.AnalysisResult.leakDetected;
 import static com.squareup.leakcanary.AnalysisResult.noLeak;
@@ -193,9 +191,9 @@ public final class HeapAnalyzer {
     long retainedSize = leakingInstance.getTotalRetainedSize();
 
     // TODO: check O sources and see what happened to android.graphics.Bitmap.mBuffer
-    if (SDK_INT <= N_MR1) {
-      retainedSize += computeIgnoredBitmapRetainedSize(snapshot, leakingInstance);
-    }
+    //if (SDK_INT <= N_MR1) {
+    //  retainedSize += computeIgnoredBitmapRetainedSize(snapshot, leakingInstance);
+    //}
 
     return leakDetected(result.excludingKnownLeaks, className, leakTrace, retainedSize,
         since(analysisStartNanoTime));
