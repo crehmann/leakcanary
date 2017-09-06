@@ -224,7 +224,7 @@ public final class HeapAnalyzer {
         if (bitmapSize < bufferSize) {
           bitmapSize += bufferSize;
         }
-        bitmapRetainedSize += bitmapSize;
+        bitmapRetainedSize = (int) (bitmapRetainedSize + bitmapSize);
       }
     }
     return bitmapRetainedSize;
